@@ -38,10 +38,13 @@ public class Test1 {
              * 2.通过DriverManager类建立与数据库的连接
              * */
             Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            if (connection != null)
+            if (connection != null){
                 System.out.println("与数据库建立连接成功");
-            else
+                int transactionIsolation = connection.getTransactionIsolation();
+                System.out.println("当前数据库事务隔离级别：" + transactionIsolation);
+            } else{
                 System.out.println("建立数据库连接失败");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
